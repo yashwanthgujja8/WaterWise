@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaterWise Advisor — AI Water-Saving Plans</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ───── HEADER ───── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">💧</span>
+        <div class="logo-text">
+          <span class="logo-title">WaterWise Advisor</span>
+          <span class="logo-sub">AI-Powered Water Conservation</span>
+        </div>
+      </div>
+      <div class="sdg-badge">
+        <span class="sdg-num">SDG 6</span>
+        <span class="sdg-label">Clean Water &amp; Sanitation</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ───── HERO ───── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">Reduce Your Water Footprint with AI</h1>
+      <p class="hero-desc">
+        Answer a few quick questions and get a personalised 7-day water-saving
+        action plan — built for households, hostels, and shared residences.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">avg. water wasted per household daily</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">7 days</span>
+          <span class="stat-label">to build sustainable habits</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">Free</span>
+          <span class="stat-label">personalised AI advice</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── MAIN ───── -->
+  <main class="main-container">
+
+    <!-- INPUT CARD -->
+    <section class="card form-card">
+      <h2 class="card-title">
+        <span class="step-badge">Step 1</span>
+        Tell us about your household
+      </h2>
+
+      <form id="waterForm" novalidate>
+
+        <!-- People -->
+        <div class="field-group">
+          <label for="people" class="field-label">
+            How many people live in your household?
+          </label>
+          <div class="number-input-wrap">
+            <button type="button" class="num-btn" id="decreaseBtn">−</button>
+            <input
+              type="number"
+              id="people"
+              name="people"
+              min="1"
+              max="50"
+              value="4"
+              class="number-input"
+              required
+            />
+            <button type="button" class="num-btn" id="increaseBtn">+</button>
+          </div>
+          <span class="field-hint">Include all permanent residents</span>
+        </div>
+
+        <!-- Residence -->
+        <div class="field-group">
+          <label class="field-label">Residence type</label>
+          <div class="residence-grid">
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="apartment" class="residence-radio" checked />
+              <span class="residence-icon">🏢</span>
+              <span class="residence-name">Apartment</span>
+            </label>
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="house" class="residence-radio" />
+              <span class="residence-icon">🏠</span>
+              <span class="residence-name">House</span>
+            </label>
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="hostel" class="residence-radio" />
+              <span class="residence-icon">🏨</span>
+              <span class="residence-name">Hostel</span>
+            </label>
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="villa" class="residence-radio" />
+              <span class="residence-icon">🏡</span>
+              <span class="residence-name">Villa</span>
+            </label>
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="farmhouse" class="residence-radio" />
+              <span class="residence-icon">🌾</span>
+              <span class="residence-name">Farmhouse</span>
+            </label>
+            <label class="residence-card">
+              <input type="radio" name="residenceRadio" value="other" class="residence-radio" />
+              <span class="residence-icon">🏗️</span>
+              <span class="residence-name">Other</span>
+            </label>
+          </div>
+          <!-- Hidden select keeps server contract intact -->
+          <select id="residence" name="residence" class="hidden-select" aria-hidden="true"></select>
+        </div>
+
+        <!-- Activities -->
+        <div class="field-group">
+          <label class="field-label">Which water-using activities apply to you?</label>
+          <span class="field-hint">Select all that apply</span>
+          <div class="activities-grid">
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="long showers" />
+              <span>🚿 Long showers</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="bathtub use" />
+              <span>🛁 Bathtub use</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="garden watering" />
+              <span>🌿 Garden watering</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="washing machine" />
+              <span>👕 Washing machine</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="dishwasher" />
+              <span>🍽️ Dishwasher</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="hand-washing dishes" />
+              <span>🤲 Hand-washing dishes</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="car washing" />
+              <span>🚗 Car washing</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="running tap while brushing" />
+              <span>🪥 Tap while brushing</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="pool or water tank" />
+              <span>🏊 Pool / water tank</span>
+            </label>
+            <label class="activity-chip">
+              <input type="checkbox" class="activity" value="floor mopping daily" />
+              <span>🧹 Daily mopping</span>
+            </label>
+          </div>
+
+          <!-- Custom activity input -->
+          <div class="other-activity-wrap">
+            <label class="other-activity-label" for="otherActivity">
+              ✏️ Other activity not listed above?
+            </label>
+            <div class="other-activity-row">
+              <input
+                type="text"
+                id="otherActivity"
+                placeholder="e.g. filling overhead tank daily, swimming pool top-up…"
+                class="other-activity-input"
+                maxlength="80"
+              />
+              <button type="button" id="addActivityBtn" class="btn-add-activity">Add</button>
+            </div>
+            <div id="customChips" class="custom-chips"></div>
+          </div>
+        </div>
+
+        <!-- Leaks / High Bills -->
+        <div class="field-group">
+          <label for="leaks" class="field-label">
+            Have you noticed leaks or unusually high water bills?
+          </label>
+          <div class="select-wrap">
+            <select id="leaks" name="leaks" class="styled-select" required>
+              <option value="">— Please select —</option>
+              <option value="Yes, I have noticed leaks">Yes, I've noticed leaks</option>
+              <option value="Yes, my bills are unusually high">Yes, my bills are high</option>
+              <option value="Both leaks and high bills">Both leaks and high bills</option>
+              <option value="No, everything seems normal">No, everything's normal</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-row">
+          <button type="submit" class="btn-primary" id="submitBtn">
+            <span class="btn-icon">✨</span>
+            Generate My Water-Saving Plan
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- LOADING STATE -->
+    <div id="loading" class="loading-card hidden">
+      <div class="loading-ring"></div>
+      <p class="loading-text">Analysing your household profile…</p>
+      <p class="loading-sub">Our AI is crafting a personalised plan for you</p>
+    </div>
+
+    <!-- RESULT CARD -->
+    <section id="result" class="card result-card hidden">
+      <div class="result-header">
+        <h2 class="card-title">
+          <span class="step-badge step-badge--green">Step 2</span>
+          Your Personalised Plan
+        </h2>
+        <button class="btn-secondary" id="copyBtn" title="Copy plan to clipboard">
+          📋 Copy
+        </button>
+      </div>
+      <div id="aiOutput" class="ai-output"></div>
+      <div class="result-footer">
+        <p class="disclaimer">
+          ⚠️ These tips are general guidelines. Actual water usage depends on
+          local conditions. Never compromise hygiene or health for water saving.
+        </p>
+        <button class="btn-ghost" id="resetBtn">← Start Over</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ───── FOOTER ───── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-text">
+        Built with <strong>IBM Bob</strong> &amp; <strong>Google Gemini AI</strong> ·
+        Contributing to <strong>SDG 6</strong> — Clean Water &amp; Sanitation
+      </p>
+      <p class="footer-sub">
+        WaterWise Advisor · AI-powered household water conservation tool
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
